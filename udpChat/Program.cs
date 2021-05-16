@@ -22,7 +22,8 @@ namespace UdpChat
         static string Path = "History";
         static string usersPath = "users.txt";
         static IPEndPoint localIP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), localPort);
-
+        static List<string> history = new List<string>();
+        static bool to_send_his = false;    
 
 
         static void Main(string[] args)
@@ -49,19 +50,30 @@ namespace UdpChat
 
                 // Sending messages
                 while (true)
-                {
+                { 
                     string message = Console.ReadLine();
-
+                    history.Add(localUser + ": " + message);
+                    if (remoteUser == "")
+                    {
+                        message = "!" + message;
+                    }
+                    else
+                    {
+                        if (to_send_his)
+                        {
+                            to_send_his = false;
+                            string s = "";
+                            foreach (string str in history)
+                            {
+                                s += str + "\n";
+                            }
+                            message = s + message;
+                        }
+                    }                    
                     byte[] data = Encoding.Unicode.GetBytes($"{localUser}: {message}");
                     EndPoint remotePoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), remotePort);
-                    listeningSocket.SendTo(data, remotePoint);
-                    if (remoteUser != "")
-                    {
-                        using (var sw = new StreamWriter($@"{Path}\{localUser}{remoteUser}", true, Encoding.Default))
-                        {
-                            sw.WriteLine($"{localUser}: {message}");
-                        }
-                    }
+                    listeningSocket.SendTo(data, remotePoint);                   
+
                 }
             }
             catch (Exception ex)
@@ -114,20 +126,6 @@ namespace UdpChat
             }
         }
 
-        static void GetHistory()
-        {
-            FileStream fs = new FileStream($@"{Path}\{localUser}{remoteUser}", FileMode.OpenOrCreate);
-            fs.Close();
-            using (StreamReader sr = new StreamReader($@"{Path}\{localUser}{remoteUser}"))
-            {
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
-            }
-        }
-
 
         private static void Listen()
         {
@@ -153,19 +151,22 @@ namespace UdpChat
                     }
                     while (listeningSocket.Available > 0);
 
+                    if(builder.ToString().Split(' ')[1][0] == '!')
+                    {
+                        to_send_his = true;
+                        Console.WriteLine($"{builder.ToString()}");
+                        continue;
+                    }
+
                     if (remoteUser == "")
                     {
                         remoteUser = builder.ToString().Split(':')[0];
 
-                        Console.WriteLine($"Подключение к {remoteUser}...");
-                        GetHistory();
+                        Console.WriteLine($"Подключение к {remoteUser}...";
                     }
-
+                    
                     Console.WriteLine($"{builder.ToString()}");
-                    using (StreamWriter sw = new StreamWriter($@"{Path}\{localUser}{remoteUser}", true, Encoding.Default))
-                    {
-                        sw.WriteLine(builder.ToString());
-                    }
+                    history.Add(remoteUser + ": " + builder.ToString());                   
                 }
             }
             catch (Exception ex)

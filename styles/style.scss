@@ -1,0 +1,201 @@
+header {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  color: white;
+  background-color: #4caf50;
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+p {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 5px;
+}
+footer {
+  width: 100%;
+  height: 33px;
+  background-color: #4caf50;
+  position: absolute;
+  top: calc(100vh - 38px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: stretch;
+  font-size: 20px;
+  color: white;
+}
+td {
+  border: 1px solid black;
+  text-align: center;
+ 
+}
+
+table {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}
+.quetion {
+  background-color: rgb(245, 245, 117);
+  font-size: 12px;
+}
+.word {
+  background-color: rgb(255, 255, 255);
+  font-size: 15px;
+}
+.nothing {
+  background-color: rgb(161, 161, 161);
+}
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 16px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.registerbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.content {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+}
+.navbar {
+  flex: 1 1 auto;
+  align-self: auto;
+  margin-left: 100px;
+}
+main {
+  display: flex;
+  flex: 5 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  align-self: center;
+  height: 90vh;
+}
+td tr {
+  margin: 0;
+  padding: 0;
+}
+.button7 {
+  width: 80%;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: 0.8em 1em calc(0.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64, 199, 129);
+  box-shadow: 0 -3px rgb(53, 167, 110) inset;
+  transition: 0.2s;
+}
+.button7:hover {
+  background: rgb(53, 167, 110);
+  cursor: pointer;
+}
+.button7:active {
+  background: rgb(33, 147, 90);
+  box-shadow: 0 3px rgb(33, 147, 90) inset;
+}
+.input7 {
+  width: 150px;
+  height: 40px;
+  font-size: 13px;
+  padding: 6px 0 4px 10px;
+  border: 1px solid #cecece;
+  background: #f6f6f6;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.constructorForm {
+  border: 1px solid rgb(107, 107, 107);
+  padding: 10px;
+  position: relative;
+  top: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.finderForm {
+  border: 1px solid rgb(107, 107, 107);
+  padding: 10px;
+  position: relative;
+  top: 70px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  bottom: 70px;
+  border-radius: 10px;
+}
+.save {
+  border: 1px solid rgb(107, 107, 107);
+  padding: 10px;
+  position: relative;
+  top: 240px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: auto;
+  border-radius: 10px;
+}
